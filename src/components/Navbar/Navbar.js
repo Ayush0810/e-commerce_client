@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "boxicons";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
+import Cart from "../Cart/Cart";
 
 function Navbar() {
+	const [open, setOpen] = useState(false);
 	return (
 		<div className="navbar">
 			<div className="wrapper">
@@ -19,50 +21,67 @@ function Navbar() {
 					</div>
 
 					<div className="item">
-						<Link className="link" to="/products/1">Women</Link>
+						<Link className="link" to="/products/1">
+							Women
+						</Link>
 					</div>
 					<div className="item">
-						<Link className="link" to="/products/2">Men</Link>
+						<Link className="link" to="/products/2">
+							Men
+						</Link>
 					</div>
 					<div className="item">
-						<Link className="link" to="/products/3">Children</Link>
+						<Link className="link" to="/products/3">
+							Children
+						</Link>
 					</div>
 				</div>
 
 				<div className="center">
-					<Link className="link" to="/">ECOMMERCE</Link>
+					<Link className="link" to="/">
+						ECOMMERCE
+					</Link>
 				</div>
 
 				<div className="right">
 					<div className="item">
-						<Link className="link" to="/">Homepage</Link>
+						<Link className="link" to="/">
+							Homepage
+						</Link>
 					</div>
 
 					<div className="item">
-						<Link className="link" to="/">About</Link>
+						<Link className="link" to="/">
+							About
+						</Link>
 					</div>
 
 					<div className="item">
-						<Link className="link" to="/">Contact</Link>
+						<Link className="link" to="/">
+							Contact
+						</Link>
 					</div>
 
 					<div className="item">
-						<Link className="link" to="/">Stores</Link>
+						<Link className="link" to="/">
+							Stores
+						</Link>
 					</div>
 
-          <div className="icons">
-          <box-icon name='search'></box-icon>
-          <box-icon name='user-circle'></box-icon>
-          <box-icon name='heart' ></box-icon>
+					<div className="icons">
+						<box-icon name="search"></box-icon>
+						<box-icon name="user-circle"></box-icon>
+						<box-icon name="heart"></box-icon>
 
-          <div className="cart-icon">
-
-          <box-icon name='cart-alt' ></box-icon>
-          <span>0</span>
-          </div>
-          </div>
+						<div className="cart-icon" onClick={() => setOpen(!open)}>
+							<box-icon name="cart-alt"></box-icon>
+							<span>0</span>
+						</div>
+					</div>
 				</div>
 			</div>
+
+			{open && <Cart/>}
 		</div>
 	);
 }
